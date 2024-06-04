@@ -1,5 +1,6 @@
 package com.riwi.Simulacro_Spring_Boot_Drill.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.riwi.Simulacro_Spring_Boot_Drill.utils.enums.RoleUser;
@@ -54,7 +55,8 @@ public class UserEntity {
         cascade = CascadeType.ALL,
         orphanRemoval = false
     )
-    private List<Enrollment> enrollments;
+    @Builder.Default
+    private List<Enrollment> enrollments = new ArrayList<>();
 
     @OneToMany(
         mappedBy = "instructorId",
@@ -62,7 +64,8 @@ public class UserEntity {
         cascade = CascadeType.ALL,
         orphanRemoval = false
     )
-    private List<Course> courses;
+    @Builder.Default
+    private List<Course> courses = new ArrayList<>();
 
     @OneToMany(
         mappedBy = "UserId",
@@ -70,7 +73,8 @@ public class UserEntity {
         cascade = CascadeType.ALL,
         orphanRemoval = false
     )
-    private List<Submission> submissions;
+    @Builder.Default
+    private List<Submission> submissions = new ArrayList<>();
 
     @OneToMany(
         mappedBy = "senderId",
@@ -78,7 +82,8 @@ public class UserEntity {
         cascade = CascadeType.ALL,
         orphanRemoval = false
     )
-    private List<Message> messagesSender;
+    @Builder.Default
+    private List<Message> messagesSender = new ArrayList<>();
 
     @OneToMany(
         mappedBy = "receiverId",
@@ -86,5 +91,6 @@ public class UserEntity {
         cascade = CascadeType.ALL,
         orphanRemoval = false
     )
-    private List<Message> messagesReceiver;
+    @Builder.Default
+    private List<Message> messagesReceiver = new ArrayList<>();
 }
