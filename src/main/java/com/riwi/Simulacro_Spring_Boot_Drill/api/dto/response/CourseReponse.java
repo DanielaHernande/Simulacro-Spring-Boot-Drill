@@ -12,6 +12,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CourseReponse {
+    
     private Long id;
     private String name;
     private String description;

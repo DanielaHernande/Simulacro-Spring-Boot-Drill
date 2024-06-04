@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SubmissionRequest {
+    
     @NotBlank(message = "Content is required")
     private String content;
 

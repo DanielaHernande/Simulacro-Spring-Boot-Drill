@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AssignmentRequest {
+    
     @NotBlank(message = "Title is required")
     private String title;
 

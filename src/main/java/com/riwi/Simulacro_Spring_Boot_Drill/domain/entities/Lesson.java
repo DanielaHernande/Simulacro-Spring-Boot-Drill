@@ -1,6 +1,5 @@
-package com.riwi.Simulacro_Spring_Boot_Drill.domain;
+package com.riwi.Simulacro_Spring_Boot_Drill.domain.entities;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -24,30 +23,27 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Assignment {
+public class Lesson {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 100, nullable = false)
-    private String title;
+    private String tittle;
 
     @Column(columnDefinition = "TEXT")
-    private String description;
-
-    @Builder.Default
-    private LocalDate date = LocalDate.now();
+    private String content;
     
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Lesson lessonId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Course courseId;
 
     @OneToMany(
-        mappedBy = "assigmentId",
+        mappedBy = "lessonId",
         fetch = FetchType.EAGER,
         cascade = CascadeType.ALL,
         orphanRemoval = false
     )
-    private List<Submission> submissions;
+    private List<Assignment> assignments;
 
 }

@@ -1,4 +1,4 @@
-package com.riwi.Simulacro_Spring_Boot_Drill.domain;
+package com.riwi.Simulacro_Spring_Boot_Drill.domain.entities;
 
 import java.time.LocalDateTime;
 

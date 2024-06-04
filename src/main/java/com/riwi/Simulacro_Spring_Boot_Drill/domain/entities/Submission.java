@@ -1,13 +1,14 @@
-package com.riwi.Simulacro_Spring_Boot_Drill.domain;
+package com.riwi.Simulacro_Spring_Boot_Drill.domain.entities;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,19 +22,25 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Enrollment {
-    
+public class Submission {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private UserEntity userId;
+    @Column(columnDefinition = "TEXT")
+    private String content;
+
+    @Builder.Default 
+    private LocalDateTime date = LocalDateTime.now();
+
+    @Column(columnDefinition = "DECIMAL(5,2)")
+    private BigDecimal grade;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Course courseId;
+    private UserEntity UserId;
 
-    @Builder.Default
-    private LocalDate date = LocalDate.now();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Assignment assigmentId;
+
 }

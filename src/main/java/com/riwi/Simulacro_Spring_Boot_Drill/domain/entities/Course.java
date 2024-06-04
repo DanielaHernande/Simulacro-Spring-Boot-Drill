@@ -1,4 +1,4 @@
-package com.riwi.Simulacro_Spring_Boot_Drill.domain;
+package com.riwi.Simulacro_Spring_Boot_Drill.domain.entities;
 
 import java.util.List;
 
@@ -23,27 +23,42 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Lesson {
-    
+public class Course {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 100, nullable = false)
-    private String tittle;
+    private String name;
 
     @Column(columnDefinition = "TEXT")
-    private String content;
-    
+    private String description;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    private Course courseId;
+    private UserEntity instructorId;
 
     @OneToMany(
-        mappedBy = "lessonId",
+        mappedBy = "courseId",
         fetch = FetchType.EAGER,
         cascade = CascadeType.ALL,
         orphanRemoval = false
     )
-    private List<Assignment> assignments;
+    private List<Enrollment> enrollments;
 
+    @OneToMany(
+        mappedBy = "courseId",
+        fetch = FetchType.EAGER,
+        cascade = CascadeType.ALL,
+        orphanRemoval = false
+    )
+    private List<Lesson> lessons;
+
+    @OneToMany(
+        mappedBy = "courseId",
+        fetch = FetchType.EAGER,
+        cascade = CascadeType.ALL,
+        orphanRemoval = false
+    )
+    private List<Message> messages;
 }

@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CourseRequest {
+    
     @NotBlank(message = "Name is required")
     private String name;
 

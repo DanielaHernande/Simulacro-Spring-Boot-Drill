@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EnrollmentRequest {
+    
     @NotNull(message = "User is required")
     private Long userId;
 

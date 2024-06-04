@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MessageRequest {
+    
     @NotNull(message = "User Sender is required")
     private Long senderId;
 

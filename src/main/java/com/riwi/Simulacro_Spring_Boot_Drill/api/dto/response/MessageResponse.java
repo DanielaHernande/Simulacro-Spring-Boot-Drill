@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MessageResponse {
+    
     private Long id;
     private UserResponse senderId;
     private UserResponse receiverId;
